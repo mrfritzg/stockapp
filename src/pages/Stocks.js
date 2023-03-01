@@ -10,7 +10,7 @@ export default function Stocks(props) {
 
     let url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${key}`;
 
-    let [ stockQuote, setStockQuote ] = useState({});
+    let [ stockQuote, setStockQuote ] = useState([]);
 
     let navigate = useNavigate() //->returns a function
 
@@ -29,18 +29,31 @@ export default function Stocks(props) {
     }, [] ) ;
 
     // console.log(stockQuote);
-
+    // stockQuote.map( quote => {
+    //     console.log(quote.name)
+    // })
 function goBack() {
 navigate(-1)
 }    
     return (
         <div>
-            {/* {stockQuote.map( quote => { */}
-                <h1>
-                    {/* {quote[0].name}  */}
-                {/* ({stockQuote})  */}
-                </h1>
-            {/* })} */}
+            {stockQuote.map( quote => { 
+                return (
+                    <div key ={quote.symbol}>
+                <h1> {quote.name} ({quote.symbol}) </h1>
+                <h2>Exchange: {quote.exchange}</h2>
+                <p>Price: {quote.price}</p>
+                <p>Change: {quote.change}</p>
+                <p>Market Cap{quote.marketCap}</p>
+                <p>Year High: {quote.yearHigh}</p>
+                <p>Year Low:{quote.yearLow}</p>
+                <p>Avergae Volume: {quote.avgVolume}</p>
+                <p>Open: {quote.open}</p>
+                <p>Previous Close: {quote.previousClose}</p>
+                <p>Shares Outstanding: {quote.sharesOutstanding}</p>
+</div>
+                )
+             })}
             
         </div>
     )
