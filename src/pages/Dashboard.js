@@ -39,7 +39,7 @@ export default function Dashboard() {
     return (
         <div>
             <h1>
-                This is the Dashboard.
+                Most Active Stocks
             </h1>
             <table className="dashboardTableDiv">
                 <thead>
@@ -54,7 +54,7 @@ export default function Dashboard() {
                         return (
                             <tr key={stock.name}>
                                 <td><Link to={`/stocks/${stock.symbol}`}>
-                                    {stock.name}
+                                    {stock.name} ({stock.symbol})
                                 </Link>
                                 </td>
                                 <td>{stock.price}</td>
